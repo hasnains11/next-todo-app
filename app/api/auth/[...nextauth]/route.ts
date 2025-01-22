@@ -28,7 +28,7 @@ const authOptions: NextAuthOptions = {
                 if (!user) {
                     return null
                 }
-                const passwordMatched = await bcrypt.compare(credentials.password, user.hashedPassword)
+                const passwordMatched = await bcrypt.compare(credentials.password, user.hashedPassword!)
                 return passwordMatched ? user : null
             }
         }),
