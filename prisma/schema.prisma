@@ -3,6 +3,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model Account {
   id                 String  @id @default(cuid())
   userId             String
@@ -35,6 +39,7 @@ model User {
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
+  hashedPassword String?
   emailVerified DateTime?
   image         String?
   accounts      Account[]
